@@ -1,0 +1,13 @@
+.nav-link{
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+}
+
+.nav-link:hover{
+    color: cyan;
+}
+
+.nav-link:active{
+    color: cyan !important;
+}
