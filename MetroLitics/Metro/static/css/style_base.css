@@ -1,13 +1,19 @@
 .nav-link{
     color: white;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
     
 }
 
 .nav-link:hover{
-    color: cyan;
+    color: black;
 }
 
 .nav-link:active{
     color: cyan !important;
+}
+
+#logo{
+    height: 7vh;
+    width: auto;
 }
