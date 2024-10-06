@@ -6,22 +6,24 @@
         <span class="Titulo-Form">INICIAR SESION</span>
         <form>
             <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <label for="correo" class="form-label">Correo</label>
+              <input type="text" class="form-control" id="correo" name="correo" placeholder="ejemplo@ejemplo.com">
               <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
             <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1">
+              <label for="contrasena" class="form-label">Conraseña</label>
+              <input type="password" class="form-control" id="contrasena" name="contrasena">
             </div>
             <div class="mb-3 form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+              <input type="checkbox" class="form-check-input" id="checkbox">
+              <label class="form-check-label" for="checkbox">Aceptar servicios y condiciones</label>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            
+            <button  class="btn btn-primary" >Submit</button>
           </form>
+          <button id="submit"> aasasas</button>
     </div>
 </div>
 
-
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 {% endblock %}

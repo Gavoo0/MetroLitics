@@ -9,3 +9,7 @@ def index(request):
 def iniciar_sesion(request):
     context={}
     return render(request,'Metro/iniciar_sesion.html',context)
+
+def mapa(request):
+    context={}
+    return render(request, 'Metro/mapa.html',context)
