@@ -10,6 +10,6 @@ def iniciar_sesion(request):
     context={}
     return render(request,'Metro/iniciar_sesion.html',context)
 
-def mapa(request):
+def analiticas(request):
     context={}
-    return render(request, 'Metro/mapa.html',context)
+    return render(request, 'Metro/analiticas.html',context)

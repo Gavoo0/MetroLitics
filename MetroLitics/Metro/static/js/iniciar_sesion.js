@@ -13,7 +13,5 @@ $(document).ready(function(){
             valido = false;
             event.preventDefault();
         }
-    
     })
-
 })

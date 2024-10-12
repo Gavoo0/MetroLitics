@@ -1,0 +1,19 @@
+#informacion{
+    align-items: center;
+    background: rgb(220, 50, 69);
+    width: 100%;
+    height: 40vh;
+    padding: 3% 2%;
+}
+
+.titulo_info{
+    text-align: center !important;
+    display: block;
+    font-size: large;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.img-card{
+    height: 30vh;
+    width: auto;
+}
