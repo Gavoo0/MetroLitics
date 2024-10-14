@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" href="{% static 'css/style_base.css' %}">
     <link rel="stylesheet" href="{% static 'css/style_analiticas.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style_forms.css' %}">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-danger">
@@ -25,6 +26,12 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'analiticas' %}">Analiticas Metro</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'mantenedor_metro' %}">Mantenedor Metro</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'mantenedor_buses' %}">Mantenedor Buses</a>
+              </li>
             </ul>
           </div>
         </div>
@@ -39,6 +46,6 @@
     {% block content %}{% endblock %}
     <script src="{% static 'js/analiticas.js' %}"></script>
     <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{% static 'js/iniciar_sesion.js' %}"></script>
+    <script src="{% static 'js/metro_form.js' %}"></script>
 </body>
 </html>
