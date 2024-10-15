@@ -12,6 +12,8 @@ def analiticas(request):
     lineas_ayer = Mantenedor_metro.objects.filter(fecha=ayer)
     lineas_hoy = Mantenedor_metro.objects.filter(fecha=hoy)
     context = {
+        'hoy':hoy,
+        'ayer':ayer,
         'lineas_ayer': lineas_ayer,
         'lineas_hoy': lineas_hoy
     }

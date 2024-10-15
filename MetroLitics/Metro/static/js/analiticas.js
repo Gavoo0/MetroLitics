@@ -6,19 +6,30 @@ Highcharts.chart('container', {
         type: 'column'
     },
     title: {
-        text: 'Analiticas Lineas del Metro'
-    },
-    subtitle: {
-        text:
-            ''
-    },
-    xAxis: {
-        type: 'category'
+        text: 'Aglomeración por Línea de Metro'
     },
     yAxis: {
         allowDecimals: false,
         title: {
-            text: 'Cantidad de personas'
+            text: 'Cantidad de Aglomeración'
         }
-    }
+    },
+    xAxis: {
+        title: {
+            text: 'Líneas de Metro'
+        }
+    },
+    series: [{
+        name: 'Aglomeración (Ayer)',
+        dataLabels: {
+            enabled: false
+        },
+        pointWidth: 50  // Ajusta el ancho de las barras aquí
+    }, {
+        name: 'Aglomeración (Hoy)',
+        dataLabels: {
+            enabled: false
+        },
+        pointWidth: 50  // Ajusta el ancho de las barras aquí
+    }]
 });
