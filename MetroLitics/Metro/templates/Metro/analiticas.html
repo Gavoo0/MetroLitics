@@ -15,16 +15,22 @@
         <thead>
             <tr>
                 <th></th>
-                <th>LINEAS(AYER)</th>
                 <th>LINEAS(HOY)</th>
+                <th>LINEAS(AYER)</th>
             </tr>
         </thead>
         <tbody>
-            {% for lineas in lineas %}
+            {% for linea_hoy in lineas_hoy %}
             <tr>
-                <th> {{lineas.linea_metro}} </th>
-                <td> {{lineas.aglomeracion}} </td>
-                <td> {{lineas.aglomeracion}}</td>
+                <th> {{linea_hoy.linea_metro}} </th>
+                <td> {{linea_hoy.aglomeracion}} </td>
+                <td> 
+                    {% for linea_ayer in lineas_ayer %}
+                        {% if linea_ayer.linea_metro == linea_hoy.linea_metro %}
+                            {{linea_ayer.aglomeracion}}
+                        {% endif %}
+                    {% endfor %}
+                </td>
             </tr>
             {% endfor %}
         </tbody>
