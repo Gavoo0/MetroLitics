@@ -5,6 +5,9 @@
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
+
+
+
 <figure class="highcharts-figure">
     <div id="container" class="container"></div>
 
@@ -17,41 +20,13 @@
             </tr>
         </thead>
         <tbody>
+            {% for lineas in lineas %}
             <tr>
-                <th>Linea 1</th>
-                <td>30 386</td>
-                <td>30 386</td>
+                <th> {{lineas.linea_metro}} </th>
+                <td> {{lineas.aglomeracion}} </td>
+                <td> {{lineas.aglomeracion}}</td>
             </tr>
-            <tr>
-                <th>Linea 2</th>
-                <td>29 173</td>
-                <td>30 386</td>
-            </tr>
-            <tr>
-                <th>Linea 3</th>
-                <td>28 430</td>
-                <td>30 386</td>
-            </tr>
-            <tr>
-                <th>Linea 4</th>
-                <td>28 042</td>
-                <td>30 386</td>
-            </tr>
-            <tr>
-                <th>Linea 5</th>
-                <td>27 063</td>
-                <td>30 386</td>
-            </tr>
-            <tr>
-                <th>Linea 6</th>
-                <td>28 684</td>
-                <td>30 386</td>
-            </tr>
-            <tr>
-                <th>Linea 7</th>
-                <td>28 684</td>
-                <td>30 386</td>
-            </tr>
+            {% endfor %}
         </tbody>
     </table>
 </figure>

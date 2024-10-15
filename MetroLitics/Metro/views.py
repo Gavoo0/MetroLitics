@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Metro
+from .models import Mantenedor_metro
 
 # Create your views here.
 def index(request):
@@ -7,7 +7,8 @@ def index(request):
     return render(request,'Metro/index.html',context)
 
 def analiticas(request):
-    context={}
+    lineas = Mantenedor_metro.objects.all()
+    context={'lineas': lineas}
     return render(request, 'Metro/analiticas.html',context)
 
 def mantenedor_metro(request):
