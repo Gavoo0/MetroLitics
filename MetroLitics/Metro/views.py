@@ -19,10 +19,6 @@ def analiticas(request):
     }
     return render(request, 'Metro/analiticas.html',context)
 
-def mantenedor_metro(request):
+def reportes(request):
     context={}
-    return render(request, 'Metro/mantenedor_metro.html',context)
-
-def mantenedor_buses(request):
-    context={}
-    return render(request, 'Metro/mantenedor_buses.html',context)
+    return render(request, 'Metro/reportes.html',context)

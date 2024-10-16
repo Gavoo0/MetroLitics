@@ -22,7 +22,43 @@
     display:none;
 }
 
+#mensaje_error1{
+    color:red;
+    text-align: center;
+    vertical-align: middle;
+    padding:10px 0 0 0;
+    margin: 0;
+    display:none;
+}
+
 #mensaje_error2{
+    color:red;
+    text-align: center;
+    vertical-align: middle;
+    padding:10px 0 0 0;
+    margin: 0;
+    display:none;
+}
+
+#mensaje_error3{
+    color:red;
+    text-align: center;
+    vertical-align: middle;
+    padding:10px 0 0 0;
+    margin: 0;
+    display:none;
+}
+
+#mensaje_error4{
+    color:red;
+    text-align: center;
+    vertical-align: middle;
+    padding:10px 0 0 0;
+    margin: 0;
+    display:none;
+}
+
+#mensaje_error5{
     color:red;
     text-align: center;
     vertical-align: middle;
