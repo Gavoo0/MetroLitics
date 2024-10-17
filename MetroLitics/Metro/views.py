@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import Mantenedor_metro, Mantenedor_bus, Reporte
 from datetime import datetime, timedelta
+from django.core.paginator import Paginator
 # Create your views here.
 def index(request):
     context={}
@@ -74,3 +75,8 @@ def reportes(request):
         
     context={}
     return render(request, 'Metro/reportes.html',context)
+
+def ver_reportes(request):
+    reportes = Reporte.objects.all()
+    context = {'reportes':reportes}
+    return render(request,'Metro/ver_reportes.html',context)
