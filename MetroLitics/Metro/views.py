@@ -77,6 +77,31 @@ def reportes(request):
     return render(request, 'Metro/reportes.html',context)
 
 def ver_reportes(request):
-    reportes = Reporte.objects.all()
-    context = {'reportes':reportes}
-    return render(request,'Metro/ver_reportes.html',context)
+    reportes_list = Reporte.objects.all()
+    paginator = Paginator(reportes_list, 5)  # Mostramos 10 reportes por página
+
+    # Obtener el número de página desde la solicitud GET
+    page_number = request.GET.get('page')
+    reportes = paginator.get_page(page_number)
+
+    context = {'reportes': reportes}
+    return render(request, 'Metro/ver_reportes.html', context)
+
+
+def mostrar_reporte(request,id_reporte):
+    reporte = Reporte.objects.get(pk=id_reporte)
+    linea_metro = reporte.f_id_metro.linea_metro
+    aglomeracion_metro = reporte.f_id_metro.aglomeracion
+    cantidad_personas_bus = reporte.f_id_bus.cantidad_personas
+    total_personas = aglomeracion_metro + cantidad_personas_bus
+    fecha = reporte.fecha
+
+    # Crear el contexto para pasar los datos a la plantilla
+    context = {
+        'linea_metro': linea_metro,
+        'aglomeracion_metro': aglomeracion_metro,
+        'cantidad_personas_bus': cantidad_personas_bus,
+        'total_personas': total_personas,
+        'fecha': fecha
+    }
+    return render(request, 'Metro/mostrar_reporte.html',context)

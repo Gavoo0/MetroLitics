@@ -6,34 +6,44 @@
     <table class="table">
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
+            <th scope="col">Reporte</th>
             <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
+          {% for reporte in reportes %}
           <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <th scope="row">Reporte {{reporte.f_id_metro.linea_metro}} {{reporte.f_id_metro.fecha}} </th>
+            <td><a href="{% url 'mostrar_reporte' reporte.id_reporte %}">
+              <button type="button" class="btn btn-primary" style="float:right;">Ver Reporte</button>
+          </a></td>
           </tr>
+          {% empty %}
           <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
+            <td colspan="2">No hay reportes disponibles.</td>
           </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
+          {% endfor %}
         </tbody>
     </table>
+
+    <!-- Paginación -->
+    <div class="pagination">
+        <span class="step-links">
+            {% if reportes.has_previous %}
+                <a href="?page=1"><button type="button" class="btn btn-primary">&laquo; primera</button></a>
+                <a href="?page={{ reportes.previous_page_number }}"><button type="button" class="btn btn-primary">anterior</button></a>
+            {% endif %}
+
+            <span class="current">
+                Página {{ reportes.number }} de {{ reportes.paginator.num_pages }}.
+            </span>
+
+            {% if reportes.has_next %}
+                <a href="?page={{ reportes.next_page_number }}"><button type="button" class="btn btn-primary">Siguiente</button></a>
+                <a href="?page={{ reportes.paginator.num_pages }}"><button type="button" class="btn btn-primary">última &raquo;</button></a>
+            {% endif %}
+        </span>
+    </div>
 </div>
-
-
 
 {% endblock %}
