@@ -45,8 +45,6 @@ def reportes(request):
                 aglomeracion=aglomeracion-personas_bus
             )
             metro.save()
-        
-        bus = Mantenedor_bus.objects.filter(fecha=fecha_bus)
 
         buses = Mantenedor_bus.objects.filter(fecha=fecha_bus)
 
