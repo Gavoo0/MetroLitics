@@ -1,8 +1,16 @@
 {% extends "Metro/base.html" %}
 {% block content %}
-
+{% if messages %}
+    <div class="alert alert-success">
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+{% endif %}
+<a href="{% url 'ver_reportes' %}"><button class="btn btn-primary" style="float:right; margin:10px;" >Ver Reportes</button></a>
 <div class="container">
     <span class="Titulo-Form">Mantenedor De Metro</span>
+    
     <form class="row g-3" id="form-agregar" method="POST" action="{% url 'reportes' %}">
       {% csrf_token %}
       

@@ -13,48 +13,52 @@ def analiticas(request):
     hoy = datetime.now().date()
     ayer = hoy - timedelta(days=1)
 
+
     buses_hoy = Mantenedor_bus.objects.filter(fecha__date=hoy)
     buses_ayer = Mantenedor_bus.objects.filter(fecha__date=ayer)
 
-    # Crear una lista para almacenar las diferencias
+
     buses_con_diferencias = []
-    
-    # Iterar sobre los datos de hoy
+
+
     for bus_hoy in buses_hoy:
-        # Obtener la aglomeración de ayer para la misma línea de metro
+        
+
         aglomeracion_ayer = None
         cantidad_personas_ayer = None
+
 
         for bus_ayer in buses_ayer:
             if bus_ayer.f_id_metro.linea_metro == bus_hoy.f_id_metro.linea_metro:
                 aglomeracion_ayer = bus_ayer.f_id_metro.aglomeracion
                 cantidad_personas_ayer = bus_ayer.cantidad_personas
-                break
         
-        # Calcular la diferencia de hoy
+
         diferencia_hoy = bus_hoy.f_id_metro.aglomeracion - bus_hoy.cantidad_personas
 
-        # Calcular la diferencia de ayer solo si hay datos
         if aglomeracion_ayer is not None and cantidad_personas_ayer is not None:
             diferencia_ayer = aglomeracion_ayer - cantidad_personas_ayer
         else:
-            diferencia_ayer = None  # Cambia esto a 0 si prefieres mostrar 0 en vez de None
-        
-        # Agregar los datos calculados a la lista
+            diferencia_ayer = None 
+
+
         buses_con_diferencias.append({
             'linea_metro': bus_hoy.f_id_metro.linea_metro,
             'diferencia_hoy': diferencia_hoy,
             'diferencia_ayer': diferencia_ayer,
         })
 
-    # Pasar los datos al contexto
+ 
     context = {
+        'buses_hoy':buses_hoy,
         'hoy': hoy,
         'ayer': ayer,
         'buses_con_diferencias': buses_con_diferencias,
     }
 
+
     return render(request, 'Metro/analiticas.html', context)
+
 
 
 
@@ -86,7 +90,7 @@ def reportes(request):
             )
             metro.save()
 
-        buses = Mantenedor_bus.objects.filter(fecha__date=fecha_bus.date())
+        buses = Mantenedor_bus.objects.filter(fecha__date=fecha_bus.date(), f_id_metro = metro)
 
         if buses.exists():
             bus = buses.first()
@@ -107,6 +111,7 @@ def reportes(request):
             fecha=fecha_metro
         )
         nuevo_reporte.save()
+        messages.success(request, "El reporte ha sido creado correctamente")
 
     context = {}
     return render(request, 'Metro/reportes.html', context)

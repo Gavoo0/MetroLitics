@@ -22,13 +22,13 @@ Highcharts.chart('container', {
     series: [{
         name: 'Aglomeración (Ayer)',
         dataLabels: {
-            enabled: false
+            enabled: true
         },
         pointWidth: 50  // Ajusta el ancho de las barras aquí
     }, {
         name: 'Aglomeración (Hoy)',
         dataLabels: {
-            enabled: false
+            enabled: true
         },
         pointWidth: 50  // Ajusta el ancho de las barras aquí
     }]
