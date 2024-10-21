@@ -6,12 +6,10 @@
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
 
-
-
 <figure class="highcharts-figure">
     <div id="container" class="container"></div>
 
-    <table id="datatable" style="display:none;">
+    <table id="datatable" style="display:none" >
         <thead>
             <tr>
                 <th></th>
@@ -20,21 +18,21 @@
             </tr>
         </thead>
         <tbody>
-            {% for linea_hoy in lineas_hoy %}
+            {% for bus in buses_con_diferencias %}
             <tr>
-                <th> {{linea_hoy.linea_metro}} </th>
-                <td> {{linea_hoy.aglomeracion}} </td>
-                <td> 
-                    {% for linea_ayer in lineas_ayer %}
-                        {% if linea_ayer.linea_metro == linea_hoy.linea_metro %}
-                            {{linea_ayer.aglomeracion}}
-                        {% endif %}
-                    {% endfor %}
-                </td>
+                <th> {{ bus.linea_metro }} </th>
+                <td> {{ bus.diferencia_hoy }} </td>
+                <td>
+                    {% if bus.diferencia_ayer is not None %} 
+                        {{ bus.diferencia_ayer }} 
+                    {% endif %} 
+                </td> 
             </tr>
             {% endfor %}
         </tbody>
     </table>
 </figure>
+
+
 
 {% endblock %}

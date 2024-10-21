@@ -1,36 +1,36 @@
 {% extends "Metro/base.html" %}
 {% block content %}
 
+{% if messages %}
+    <div class="alert alert-success">
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+{% endif %}
+<a href="{% url 'ver_reportes' %}" class="btn btn-primary">Volver a la lista de reportes</a>
 <div class="container">
     <span class="Titulo-Form">Mantenedor De Metro</span>
-    <form class="row g-3" id="form-agregar" method="POST" action="{% url 'reportes' %}">
+    <form class="row g-3" id="form-agregar" method="POST" action="{% url 'editar_reportes' reporte.id_reporte %}">
       {% csrf_token %}
-      
       <!-- Datos del Metro -->
       <div class="col-md-12">
           <label for="linea" class="form-label">Linea Metro</label>
-          <select class="form-select" id="linea" name="linea">
-              <option selected disabled>Seleccione Linea</option>
-              <option value="Linea_1">Linea 1</option>
-              <option value="Linea_2">Linea 2</option>
-              <option value="Linea_3">Linea 3</option>
-              <option value="Linea_4">Linea 4</option>
-              <option value="Linea_5">Linea 5</option>
-              <option value="Linea_6">Linea 6</option>
-              <option value="Linea_7">Linea 7</option>
+          <select class="form-select" id="linea" name="linea" disabled>
+              <option selected >{{metro.linea_metro}}</option>
           </select>
           <p id="mensaje_error" >Seleccione una opción</p>
       </div>
   
       <div class="col-md-12">
           <label for="fecha" class="form-label">Fecha</label>
-          <input type="datetime-local" class="form-control" id="fecha" name="fecha">
+          <input type="text" class="form-control" id="fecha" name="fecha" disabled value="{{metro.fecha}}"> 
           <p id="mensaje_error1" >Seleccione una opción</p>
       </div>
   
       <div class="col-md-12">
           <label for="aglomeracion" class="form-label">Cantidad de Aglomeración</label>
-          <input type="number" class="form-control" id="aglomeracion" name="aglomeracion">
+          <input type="number" class="form-control" id="aglomeracion" name="aglomeracion" value="{{metro.aglomeracion}}">
           <p id="mensaje_error2" >Ingrese algún dato</p>
       </div>
   
@@ -39,18 +39,18 @@
   
       <div class="col-md-12">
           <label for="fecha_bus" class="form-label">Fecha Bus</label>
-          <input type="datetime-local" class="form-control" id="fecha_bus" name="fecha_bus">
+          <input type="text" class="form-control" id="fecha_bus" name="fecha_bus" disabled value="{{bus.fecha}}" >
           <p id="mensaje_error4" >Seleccione una opción</p>
       </div>
   
       <div class="col-md-12">
           <label for="personas_bus" class="form-label">Cantidad de Personas Bus</label>
-          <input type="number" class="form-control" id="personas_bus" name="personas_bus">
+          <input type="number" class="form-control" id="personas_bus" name="personas_bus" value="{{bus.cantidad_personas}}" >
           <p id="mensaje_error5" >Ingrese algún dato</p>
       </div>
   
       <div class="col-12">
-          <button type="submit" class="btn btn-primary" id="boton-submit">Agregar</button>
+          <button type="submit" class="btn btn-primary" id="boton-submit">Actualizar</button>
       </div>
   </form>
   
@@ -58,4 +58,5 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
 {% endblock %}

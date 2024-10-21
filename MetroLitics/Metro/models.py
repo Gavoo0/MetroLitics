@@ -4,7 +4,7 @@ from datetime import datetime
 class Mantenedor_metro(models.Model):
     id_metro = models.AutoField(primary_key=True)
     linea_metro = models.CharField(max_length=50)
-    fecha = models.DateField()
+    fecha = models.DateTimeField()
     aglomeracion = models.IntegerField()
     
     def __str__(self):
@@ -13,7 +13,7 @@ class Mantenedor_metro(models.Model):
 class Mantenedor_bus(models.Model):
     id_bus = models.AutoField(primary_key=True)
     f_id_metro = models.ForeignKey(Mantenedor_metro,on_delete=models.CASCADE,db_column='id_metro')
-    fecha = models.DateField(null=True)
+    fecha = models.DateTimeField(null=True)
     cantidad_personas = models.IntegerField()
     
     def __str__(self):
@@ -24,7 +24,7 @@ class Reporte(models.Model):
     id_reporte = models.AutoField(primary_key=True)
     f_id_metro = models.ForeignKey(Mantenedor_metro,on_delete=models.CASCADE,db_column='id_metro')
     f_id_bus = models.ForeignKey(Mantenedor_bus,on_delete=models.CASCADE,db_column='id_bus',null=True)
-    fecha = models.DateField()
+    fecha = models.DateTimeField()
     
     def __str__(self):
-        return self.f_id_metro.linea_metro + " (" + self.fecha.strftime('%Y-%m-%d') + ")"
+        return self.f_id_metro.linea_metro+ " (" + self.fecha.strftime('%Y-%m-%d') + ")"

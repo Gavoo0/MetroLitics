@@ -12,9 +12,14 @@
           {% for reporte in reportes %}
           <tr>
             <th scope="row">Reporte {{reporte.f_id_metro.linea_metro}} {{reporte.f_id_metro.fecha}} </th>
-            <td><a href="{% url 'mostrar_reporte' reporte.id_reporte %}">
-              <button type="button" class="btn btn-primary" style="float:right;">Ver Reporte</button>
-          </a></td>
+            <td>
+              <a href="{% url 'mostrar_reporte' reporte.id_reporte %}">
+                <button type="button" class="btn btn-primary" style="float:right;">Ver Reporte</button>
+              </a>
+              <a href="{% url 'editar_reportes' reporte.id_reporte %}">
+                <button type="button" class="btn btn-primary" style="float:right; margin-right: 10px;">Editar Reporte</button>
+              </a>
+            </td>
           </tr>
           {% empty %}
           <tr>

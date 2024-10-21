@@ -51,6 +51,17 @@ $(document).ready(function(){
             $("#mensaje_error4").fadeOut();
         }
 
+        if(parseInt(cantidad)<parseInt(cantidad2)){
+            $("#aglomeracion").css("border-color","red");
+            $("#personas_bus").css("border-color","red");
+            console.log(cantidad + " <" + cantidad2)
+            console.log("menor que")
+            valid = false;
+        }else{
+            $("#personas_bus").css("border-color","#ced4da");
+            $("#aglomeracion").css("border-color","#ced4da");
+        }
+
         if (!valid) {
             event.preventDefault();
         }
