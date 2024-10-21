@@ -65,7 +65,6 @@ def reportes(request):
         aglomeracion = int(request.POST.get('aglomeracion'))
         fecha_bus_str = request.POST.get('fecha_bus') 
         personas_bus = int(request.POST.get('personas_bus'))
-
         fecha_metro_naive = datetime.strptime(fecha_metro_str, '%Y-%m-%dT%H:%M')
 
         fecha_metro = timezone.make_aware(fecha_metro_naive)
@@ -73,7 +72,7 @@ def reportes(request):
         fecha_bus_naive = datetime.strptime(fecha_bus_str, '%Y-%m-%dT%H:%M')
         fecha_bus = timezone.make_aware(fecha_bus_naive)
 
-        metros = Mantenedor_metro.objects.filter(fecha=fecha_metro, linea_metro=linea_metro)
+        metros = Mantenedor_metro.objects.filter(fecha__date=fecha_metro.date(), linea_metro=linea_metro)
 
         if metros.exists():
             metro = metros.first()
@@ -87,7 +86,7 @@ def reportes(request):
             )
             metro.save()
 
-        buses = Mantenedor_bus.objects.filter(fecha=fecha_bus)
+        buses = Mantenedor_bus.objects.filter(fecha__date=fecha_bus.date())
 
         if buses.exists():
             bus = buses.first()
