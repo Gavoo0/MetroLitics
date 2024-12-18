@@ -93,6 +93,7 @@ def reportes(request):
         buses = Mantenedor_bus.objects.filter(fecha__date=fecha_bus.date(), f_id_metro = metro)
 
         if buses.exists():
+            
             bus = buses.first()
             bus.f_id_metro = metro
             bus.cantidad_personas = personas_bus
